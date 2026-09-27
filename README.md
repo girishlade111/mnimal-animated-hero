@@ -1,30 +1,58 @@
 # Mnimal Animated Hero
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+A minimal, dark, animated hero-section landing page built with Next.js. Bold oversized typography with an animated line-shadow effect, glowing orange radial-gradient backdrop, shimmering CTA button, and a responsive nav with mobile menu — all animation done client-side with Motion.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/gileb64375-5584s-projects/v0-mnimal-animated-hero)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/1DS7CnwRiRv)
+**Live demo:** https://girishlade111.github.io/mnimal-animated-hero/
 
-## Overview
+## Features
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+- **Animated headline** — `LineShadowText` component renders a diagonal striped shadow under the hero text, animated with Motion
+- **Neon gradient backdrop** — layered SVG radial gradients (white-hot core fading into orange) on a black canvas
+- **Shimmer button** — CTA button with an animated shine sweep
+- **Responsive nav** — desktop links + hamburger menu on mobile
+- **Dark theme** — pure-black canvas, high-contrast typography
+- **Static-export ready** — builds to plain HTML/CSS/JS (`output: 'export'`), deployable anywhere including GitHub Pages
 
-## Deployment
+## Tech stack
 
-Your project is live at:
+- **Next.js 15** (App Router, static export) + **React 19** + TypeScript
+- **Motion** (`motion/react`) — animation
+- **Tailwind CSS** + **shadcn/ui** bits (button)
+- **Geist** font, **lucide-react** icons, **@vercel/analytics**
 
-**[https://vercel.com/gileb64375-5584s-projects/v0-mnimal-animated-hero](https://vercel.com/gileb64375-5584s-projects/v0-mnimal-animated-hero)**
+## Quick start
 
-## Build your app
+```bash
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # outputs to ./out
+```
 
-Continue building your app on:
+## Project structure
 
-**[https://v0.app/chat/projects/1DS7CnwRiRv](https://v0.app/chat/projects/1DS7CnwRiRv)**
+```
+app/
+  page.tsx                 # The hero page
+  layout.tsx               # Root layout + metadata
+  globals.css
+components/
+  line-shadow-text.tsx     # Animated line-shadow headline text
+  shimmer-button.tsx       # Shimmer-sweep CTA button
+  theme-provider.tsx
+  ui/button.tsx            # shadcn button
+public/                    # Placeholder images/logos
+next.config.mjs            # output: 'export', images unoptimized
+```
 
-## How It Works
+## Notes
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+- `basePath: '/mnimal-animated-hero'` is set in `next.config.mjs` so asset URLs resolve under the GitHub Pages subpath. Remove it if you deploy to a root domain or Vercel.
+- Next.js was bumped from 15.2.4 to 15.2.8 for the React2Shell (CVE-2025-55182) security patch.
+
+## Original v0 project
+
+This repository was initialized from a [v0](https://v0.app) project. Any changes made in the v0 chat are automatically synced here.
+
+---
+
+Built by Girish Lade — https://ladestack.in
